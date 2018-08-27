@@ -1,0 +1,23 @@
+[user]
+	email = example@example.com
+	name = example
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	st = status
+	edit-last-commit = !vim `git diff-tree -r --name-only HEAD HEAD~1`
+	co = checkout
+	br = branch
+	ci = commit
+	d = diff
+	sh = show
+	subupdate = submodule foreach git pull origin master
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[pager]
+	color = true
