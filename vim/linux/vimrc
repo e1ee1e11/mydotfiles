@@ -1,0 +1,130 @@
+" The overview to use the vim config 
+"
+" 1. Install `vim-plug`
+"
+"     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
+" 2. Copy the setting to .vimrc
+" 3. Write the setting to $HOME/.config//init.nvim
+"
+"    set runtimepath^=~/.vim runtimepath+=~/.vim/after
+"    let &packpath = &runtimepath
+"    source ~/.vimrc
+"
+" 4. If you use neovim, install `neovim` pakcage
+"
+"    pip install neovim
+"
+" 5. Open neovim/vim and type `:PlugInstall` and `":UpdateRemotePlugins`
+"
+filetype plugin indent on
+
+if &compatible
+    set nocompatible
+endif
+
+set pyxversion=3
+" Use vim-plugged as plugin manager
+" Install plugin reference: https://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/plugged')
+
+" https://github.com/fatih/vim-go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" fzf
+Plug '~/.fzf'
+
+" Python syntax
+Plug 'yen3/vim-python-syntax'
+
+Plug 'Shougo/neco-syntax'      " language syntax
+Plug 'zchee/deoplete-jedi'     " Python
+Plug 'davidhalter/jedi-vim'
+
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+call plug#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nu
+set cursorline
+set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
+set ambiwidth=double
+
+" Color configuration
+set bg=dark
+hi LineNr cterm=bold ctermfg=DarkGrey ctermbg=NONE
+hi CursorLineNr cterm=bold ctermfg=Green ctermbg=NONE
+
+" Disable bleep!
+set visualbell
+set noerrorbells
+
+set novisualbell
+set tm=500
+
+set backspace=indent,eol,start
+
+" indent key mapping
+nnoremap <tab> v>
+nnoremap <s-tab> v<
+vnoremap <tab> >gv
+vnoremap <s-tab> <gv
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Python setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let python_highlight_all = 1
+
+" set python indention
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set textwidth=79
+set expandtab
+set autoindent
+set fileformat=unix
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto-complete setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Deoplete:{{{
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set completeopt-=preview    "no scratch window
+
+inoremap <silent><expr> <Tab>
+            \ pumvisible() ? "\<C-n>" : "<Tab>"
+
+" deoplete-jedi options (Python)
+function! ChompedSystem( ... )
+    return substitute(call('system', a:000), '\n\+$', '', '')
+endfunction
+
+let g:python3_host_prog = ChompedSystem('which python3')
+""}}}
+" UltiSnips :{{{
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+" }}}
+
+" vim: ft=vim foldmethod=marker foldcolumn=1
