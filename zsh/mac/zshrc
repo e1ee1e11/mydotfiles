@@ -115,12 +115,15 @@ export PAGER='less'
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Aliases
+alias ag='ag --nogroup'
 alias cat='bat'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias cdvm="cd ~/workspace/qnap/vm-16 && vagrant ssh"
+alias vim='nvim'
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden -I --color=always'
+export FZF_DEFAULT_OPTS="--ansi"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
