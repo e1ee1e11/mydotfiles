@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/vagrant/.oh-my-zsh"
+export ZSH="/home/vagrant/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -112,6 +112,7 @@ alias ag='ag --nogroup'
 alias cat='bat'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias vim='nvim'
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -122,7 +123,3 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # golang
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-
-# vim-go-ide https://github.com/farazdagi/vim-go-ide
-alias vimgo='vim -u ~/.vimrc.go'
-[[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
