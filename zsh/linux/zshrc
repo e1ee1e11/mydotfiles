@@ -103,16 +103,16 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-export EDITOR='vim'
-export VISUAL='vim'
-export PAGER='less'
-
 # Aliases
 alias ag='ag --nogroup'
 alias cat='bat'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias vim='nvim'
+
+export EDITOR='vim'
+export VISUAL='vim'
+export PAGER='less'
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -123,3 +123,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # golang
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+# tmuxinator
+source /usr/local/lib/ruby/gems/2.6.0/gems/tmuxinator-0.16.0/completion/tmuxinator.zsh

@@ -101,8 +101,13 @@ syntax enable
 if isdirectory($HOME.'/.vim/plugged/tomorrow-theme/vim')
     colorscheme Tomorrow-Night-Eighties
 endif
-hi LineNr cterm=bold ctermfg=DarkGrey ctermbg=NONE
-hi CursorLineNr cterm=bold ctermfg=Green ctermbg=NONE
+hi LineNr cterm=bold ctermfg=DarkGrey ctermbg=None
+hi CursorLineNr cterm=bold ctermfg=Green ctermbg=None
+
+if has("termguicolors")
+    " enable true color
+    set termguicolors
+endif
 
 " Disable bleep!
 set visualbell
