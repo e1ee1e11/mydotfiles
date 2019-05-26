@@ -72,6 +72,12 @@ export PATH=$GOPATH/bin:$PATH
 # If you need to use it as "make", you can add a "gnubin" directory
 PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
+# Install lastest ruby and gem in order to use Tmuxinator
+PATH="/usr/local/opt/ruby/bin:$PATH"
+# tmuxinator completion
+PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
+source /usr/local/lib/ruby/gems/2.6.0/gems/tmuxinator-1.1.1/completion/tmuxinator.zsh
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -100,11 +106,18 @@ PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# Aliases
+alias ag='ag --nogroup'
+alias cat='bat'
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias cdvm="cd ~/workspace/qnap/vm-16 && vagrant ssh"
+alias vim='nvim'
 
 export LSCOLORS="GxfxcxdxDxegedabagacad"
 
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 export PAGER='less'
 
 #export NVM_DIR="$HOME/.nvm"
@@ -113,14 +126,6 @@ export PAGER='less'
 
 # For zsh syntax-highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Aliases
-alias ag='ag --nogroup'
-alias cat='bat'
-alias preview="fzf --preview 'bat --color \"always\" {}'"
-alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
-alias cdvm="cd ~/workspace/qnap/vm-16 && vagrant ssh"
-alias vim='nvim'
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

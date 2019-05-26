@@ -9,8 +9,9 @@ unbind C-b
 
 unbind %
 unbind '"'
-bind | split-window -h
-bind - split-window -v
+bind-key c new-window -c "#{pane_current_path}"
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
 
 # hjkl pane traversal
 bind h select-pane -L
@@ -28,8 +29,8 @@ bind-key L resize-pane -R 3
 bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
 
 # Set tty
-set -g default-terminal "xterm-256color"
-set-option -ga terminal-overrides ",xterm-256color:Tc"
+set -g default-terminal "screen-256color"
+set-option -ga terminal-overrides ",*256col*:Tc"
 
 # auto window rename
 set-window-option -g automatic-rename on
@@ -75,11 +76,11 @@ bind -n S-Right next-window
 
 set -g status-position bottom
 set -g status-bg colour234
-set -g status-fg colour137
+set -g status-fg colour0
 set -g status-attr dim
 set -g status-left ''
 set -g status-interval 2
-set -g status-right "#[fg=green]#($TMUX_PLUGIN_MANAGER_PATH/tmux-mem-cpu-load/tmux-mem-cpu-load -g 5 --mem-mode 2 -a 0 --interval 2)#[default]"
+set -g status-right '#{cpu_bg_color} CPU: #{cpu_icon} #{cpu_percentage} | %a %h-%d %H:%M '
 set -g status-right-length 50
 set -g status-left-length 20
 
@@ -104,7 +105,7 @@ setw -g window-status-bell-bg colour1
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'thewtex/tmux-mem-cpu-load'
+set -g @plugin 'tmux-plugins/tmux-cpu'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
