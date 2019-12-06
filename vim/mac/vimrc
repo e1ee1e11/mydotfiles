@@ -54,7 +54,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Python syntax
-Plug 'yen3/vim-python-syntax'
+Plug 'vim-python/python-syntax'
 Plug 'Chiel92/vim-autoformat'
 
 " Search
@@ -66,7 +66,6 @@ Plug 'Shougo/unite-outline'
 " Status line & tab line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'mkitt/tabline.vim'
 
 " Autocomplete
 if has('nvim')
@@ -142,6 +141,11 @@ set foldlevel=99
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-go setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:go_fmt_command = "goimports"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let python_highlight_all = 1
@@ -179,10 +183,8 @@ let g:airline_left_sep='>'
 let g:airline_right_sep='<'
 let g:airline_theme='cobalt2'
 
-" tabline colour setting
-hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
-hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
-hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -277,3 +279,4 @@ let g:UltiSnipsEditSplit="vertical"
 " }}}
 
 " vim: ft=vim foldmethod=marker foldcolumn=1
+set tags=tags
