@@ -66,17 +66,14 @@ source $ZSH/oh-my-zsh.sh
 
 # GOLANG custom location
 export GOPATH=$HOME/workspace/gocode
-export PATH=$GOPATH/bin:$PATH
+export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
+export GOROOT=/usr/local/go
+export GOPROXY=http://gomod.qnap.me
+export GOPRIVATE=git.qnap.me
 
 # GNU "make" has been installed as "gmake".
 # If you need to use it as "make", you can add a "gnubin" directory
 PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
-
-# Install lastest ruby and gem in order to use Tmuxinator
-PATH="/usr/local/opt/ruby/bin:$PATH"
-# tmuxinator completion
-PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
-source /usr/local/lib/ruby/gems/2.6.0/gems/tmuxinator-1.1.1/completion/tmuxinator.zsh
 
 # User configuration
 
@@ -113,6 +110,10 @@ alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias cdvm="cd ~/workspace/qnap/vm-16 && vagrant ssh"
 alias vim='nvim'
+alias ctags='/usr/local/bin/ctags'
+alias gohome='docker run --rm -e "JOB_NO=Q1845" registry.qnap.me/qnap/gohome'
+alias git='LANG=en_US.UTF-8 git'
+alias mux='tmuxinator'
 
 export LSCOLORS="GxfxcxdxDxegedabagacad"
 
@@ -132,3 +133,11 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden -I --color=always'
 export FZF_DEFAULT_OPTS="--ansi"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
+
+# pyenv
+PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"

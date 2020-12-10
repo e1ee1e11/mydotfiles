@@ -237,7 +237,6 @@ noremap <silent><leader>b :Buffers<CR>
 " Unite Outline:
 let g:unite_enable_split_vertically = 1
 let g:unite_enable_ignore_case = 1
-let g:unite_enable_smart_case = 1
 let g:unite_enable_use_short_source_names = 1
 " outline
 nnoremap <leader>o :Unite -start-insert outline<CR>
@@ -250,7 +249,6 @@ nnoremap <leader>o :Unite -start-insert outline<CR>
 " Deoplete:{{{
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
 
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set completeopt-=preview    "no scratch window
